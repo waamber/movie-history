@@ -1,2 +1,8 @@
 body {
   background-color: #ff0000; }
+
+#movies {
+  margin: 10px; }
+
+.row {
+  margin: 20px; }
