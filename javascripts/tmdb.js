@@ -32,11 +32,6 @@ const setKey = (apiKey) => {
 
 
 
-const showResults = (movieArray) => {
-  dom.clearDom();
-  dom.domString(movieArray, imgConfig);
-};
-
 //configuration route
 const tmdbConfiguration = () => {
   return new Promise((resolve, reject) => {
@@ -57,4 +52,13 @@ const getConfig = () => {
   });
 };
 
-module.exports = { setKey, searchMovies };
+const showResults = (movieArray) => {
+  dom.clearDom('movies');
+  dom.domString(movieArray, imgConfig, 'movies');
+};
+
+const getImgConfig = () => {
+  return imgConfig;
+};
+
+module.exports = { setKey, searchMovies, getImgConfig };

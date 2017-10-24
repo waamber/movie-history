@@ -1,6 +1,7 @@
 'use strict';
 const tmdb = require('./tmdb');
 const firebaseApi = require('./firebaseApi');
+const dom = require('./dom');
 
 const pressEnter = () => {
   $(document).keypress((e) => {
@@ -9,16 +10,6 @@ const pressEnter = () => {
       let search = searchText.replace(/\s/g, '%20');
       tmdb.searchMovies(search);
     }
-  });
-};
-
-const googleAuth = () => {
-  $('#googleBtn').click(() => {
-    firebaseApi.authenticateGoogle().then((result) => {
-      console.log('result', result);
-    }).catch((error) => {
-      console.log('error in authentication', error);
-    });
   });
 };
 
@@ -32,11 +23,26 @@ const myLinks = () => {
       $('#search').addClass('hidden');
       $('#myMovies').removeClass('hidden');
       $('#authScreen').addClass('hidden');
+      firebaseApi.getMovieList().then((results) => {
+        dom.clearDom('moviesMine');
+        dom.domString(results, tmdb.getImgConfig(), 'moviesMine');
+      }).catch((error) => {
+        console.log('getMovies error', error);
+      });
     } else if (e.target.id === 'auth') {
       $('#search').addClass('hidden');
       $('#myMovies').addClass('hidden');
       $('#authScreen').removeClass('hidden');
     }
+  });
+};
+
+const googleAuth = () => {
+  $('#googleBtn').click(() => {
+    firebaseApi.authenticateGoogle().then((result) => {
+    }).catch((error) => {
+      console.log('error in authentication', error);
+    });
   });
 };
 
