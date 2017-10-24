@@ -30,6 +30,8 @@ const setKey = (apiKey) => {
   getConfig();
 };
 
+
+
 const showResults = (movieArray) => {
   dom.clearDom();
   dom.domString(movieArray, imgConfig);
