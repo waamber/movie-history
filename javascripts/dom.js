@@ -9,12 +9,13 @@ const domString = (movieArray, imgConfig, divName, search) => {
     domString += `<div class="col-sm-6 col-md-4 movie">`;
     domString += `<div class='thumbnail'>`;
     if (!search) {
-      domString += `<button class='btn btn-danger deleteBtn' data-firebase-id='${movieArray[i].id}'>X</button>`;
+      domString += `<button class='btn btn-danger delete' data-firebase-id='${movieArray[i].id}'>X</button>`;
     }
     domString += `<img class="poster_path" src='${imgConfig.base_url}/w342/${movieArray[i].poster_path}' alt=''>`;
     domString += `<div class='caption'>`;
     domString += `<h3 class="title">${movieArray[i].title}</h3>`;
     domString += `<p class="overview">${movieArray[i].overview}</p>`;
+
     if (search) {
       domString += `<p>`;
       domString += `<a href='#' class='btn btn-primary' role='button'>Review</a>`;
@@ -23,6 +24,7 @@ const domString = (movieArray, imgConfig, divName, search) => {
     } else {
       domString += `<p>Rating: ${movieArray[i].rating}<p>`;
     }
+
     domString += `</div>`;
     domString += `</div>`;
     domString += `</div>`;
