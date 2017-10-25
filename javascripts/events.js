@@ -46,4 +46,22 @@ const googleAuth = () => {
   });
 };
 
-module.exports = { pressEnter, myLinks, googleAuth };
+const wishListEvents = () => {
+  $('body').on('click', '.wishlistBtn', (e) => {
+    let parent = e.target.closest('.movie');
+
+    let newMovie = {
+      'title': $(parent).find('.title').html(),
+      'overview': $(parent).find('.overview').html(),
+      'poster_path': $(parent).find('.poster_path').attr('src').split('/').pop(),
+      'rating': 0,
+      'isWatched': false,
+      'uid': ''
+    };
+    console.log('newMovie', newMovie);
+    // firebaseApi.saveMovie().then().catch();
+
+  });
+};
+
+module.exports = { pressEnter, myLinks, googleAuth, wishListEvents };
