@@ -1,5 +1,4 @@
 'use strict';
-
 const domString = (movieArray, imgConfig, divName, search) => {
   let domString = '';
   for (let i = 0; i < movieArray.length; i++) {
@@ -15,7 +14,6 @@ const domString = (movieArray, imgConfig, divName, search) => {
     domString += `<div class='caption'>`;
     domString += `<h3 class="title">${movieArray[i].title}</h3>`;
     domString += `<p class="overview">${movieArray[i].overview}</p>`;
-
     if (search) {
       domString += `<p>`;
       domString += `<a href='#' class='btn btn-primary' role='button'>Review</a>`;
@@ -24,7 +22,6 @@ const domString = (movieArray, imgConfig, divName, search) => {
     } else {
       domString += `<p>Rating: ${movieArray[i].rating}<p>`;
     }
-
     domString += `</div>`;
     domString += `</div>`;
     domString += `</div>`;
