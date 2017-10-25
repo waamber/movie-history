@@ -58,9 +58,11 @@ const wishListEvents = () => {
       'isWatched': false,
       'uid': ''
     };
-    console.log('newMovie', newMovie);
-    // firebaseApi.saveMovie().then().catch();
-
+    firebaseApi.saveMovie(newMovie).then((results) => {
+      $(parent).remove();
+    }).catch((error) => {
+      console.log('error in saveMovie', error);
+    });
   });
 };
 
